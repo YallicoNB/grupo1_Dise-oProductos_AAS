@@ -1,5 +1,6 @@
 package com.antonela.art.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.JdbcTypeCode;
@@ -18,6 +19,7 @@ public class OrdenCompra {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_cliente", nullable = false)
+    @JsonIgnoreProperties({"contrasenaHash", "versionContrasena", "creadoEn", "actualizadoEn"})
     private Cliente cliente;
 
     @JdbcTypeCode(SqlTypes.JSON)

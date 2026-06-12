@@ -29,6 +29,9 @@ public class StripeService {
     @Value("${stripe.secret-key}")
     private String secretKey;
 
+    @Value("${app.frontend-url}")
+    private String frontendUrl;
+
     private final OrdenCompraRepository ordenRepository;
     private final PagoRepository pagoRepository;
     private final CitaRepository citaRepository;
@@ -79,8 +82,6 @@ public class StripeService {
                     .build();
         }).toArray(SessionCreateParams.LineItem[]::new);
 
-        String frontendUrl = "http://localhost:3000";
-
         SessionCreateParams params = SessionCreateParams.builder()
                 .setMode(SessionCreateParams.Mode.PAYMENT)
                 .setSuccessUrl(frontendUrl + "/shop/confirmacion?status=success&session_id={CHECKOUT_SESSION_ID}")
@@ -102,8 +103,6 @@ public class StripeService {
 
         BigDecimal monto = cita.getMontoPagado() != null ? cita.getMontoPagado()
                 : cita.getServicio().getPrecioMinimo();
-
-        String frontendUrl = "http://localhost:3000";
 
         SessionCreateParams params = SessionCreateParams.builder()
                 .setMode(SessionCreateParams.Mode.PAYMENT)
