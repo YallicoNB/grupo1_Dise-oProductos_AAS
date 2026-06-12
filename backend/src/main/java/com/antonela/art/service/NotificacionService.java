@@ -47,8 +47,9 @@ public class NotificacionService {
 
     @PostConstruct
     public void initTwilio() {
-        if (twilioAccountSid != null && !twilioAccountSid.equals("TU_ACCOUNT_SID")
-                && twilioAuthToken != null && !twilioAuthToken.equals("TU_AUTH_TOKEN")) {
+        boolean credencialesReales = twilioAccountSid != null && !twilioAccountSid.equals("ACplaceholder")
+                && twilioAuthToken != null && !twilioAuthToken.equals("placeholder");
+        if (credencialesReales) {
             Twilio.init(twilioAccountSid, twilioAuthToken);
             twilioInicializado = true;
             logger.info("Twilio inicializado correctamente");
