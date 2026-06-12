@@ -145,6 +145,21 @@ public class NotificacionService {
                         + " - S/ " + orden.getMontoTotal());
     }
 
+    public void enviarPagoCita(Cita cita) {
+        String asunto = "Pago recibido - Antonela Art Salon";
+        String cuerpo = generarMensajePagoCita(cita);
+
+        boolean enviado = enviarWhatsApp(cita.getCliente().getTelefono(), cuerpo);
+        if (!enviado) {
+            enviarEmail(cita.getCliente().getCorreoElectronico(), asunto, cuerpo);
+        }
+
+        registrarNotificacionAdmin("pago_cita",
+                "Pago recibido para cita #" + cita.getId()
+                        + " - " + cita.getCliente().getNombreCompleto()
+                        + " - " + cita.getServicio().getNombre());
+    }
+
     private boolean enviarWhatsApp(String destinatario, String mensaje) {
         if (!twilioInicializado) {
             logger.warn("Twilio no disponible, se omite WhatsApp");
@@ -205,6 +220,24 @@ public class NotificacionService {
                 + "Tu pago ha sido procesado correctamente.\n"
                 + "Te contactaremos cuando tu pedido esté listo para entrega.\n"
                 + "Contacto: +51 999 999 999";
+    }
+
+    private String generarMensajePagoCita(Cita cita) {
+        DateTimeFormatter fechaFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter horaFormatter = DateTimeFormatter.ofPattern("HH:mm");
+
+        return "🖌 Antonela Art Salon\n"
+                + "=========================\n"
+                + "Pago recibido exitosamente\n\n"
+                + "Cliente: " + cita.getCliente().getNombreCompleto() + "\n"
+                + "Servicio: " + cita.getServicio().getNombre() + "\n"
+                + "Fecha: " + cita.getFechaCita().format(fechaFormatter) + "\n"
+                + "Hora: " + cita.getHoraCita().format(horaFormatter) + "\n"
+                + "Monto: S/ " + (cita.getMontoPagado() != null
+                        ? cita.getMontoPagado() : cita.getServicio().getPrecioMinimo()) + "\n\n"
+                + "Tu pago ha sido procesado correctamente.\n"
+                + "Te esperamos en nuestro local.\n"
+                + "📞 +51 999 999 999";
     }
 
     private String generarMensajeConfirmacion(Cita cita) {

@@ -153,6 +153,12 @@ public class StripeService {
                 pago.setIdTransaccionSimulada(paymentIntentId);
                 pagoRepository.save(pago);
                 logger.info("Pago Stripe registrado para cita {}: paymentIntent={}", citaId, paymentIntentId);
+
+                try {
+                    notificacionService.enviarPagoCita(cita);
+                } catch (Exception e) {
+                    logger.error("Error al enviar notificacion de pago de cita {}: {}", citaId, e.getMessage());
+                }
             });
         } else {
             Long ordenId = Long.parseLong(clientReferenceId);
