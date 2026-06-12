@@ -1,0 +1,12 @@
+node_modules/
+dist/
+target/
+*.jar
+*.class
+.idea/
+*.iml
+.vscode/
+*.log
+.DS_Store
+HELP.md
+*.db
