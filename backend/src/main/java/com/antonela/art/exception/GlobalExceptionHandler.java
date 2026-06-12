@@ -25,7 +25,7 @@ public class GlobalExceptionHandler {
         }
         logger.warn("Error de validacion: {}", errors);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                .body(Map.of("errores", errors));
+                .body(Map.of("error", errors));
     }
 
     @ExceptionHandler(IllegalArgumentException.class)

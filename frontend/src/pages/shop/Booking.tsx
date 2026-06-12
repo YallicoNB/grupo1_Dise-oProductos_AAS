@@ -114,7 +114,6 @@ const Booking: React.FC = () => {
 
   const allDone =
     state.serviceId &&
-    state.pro &&
     state.date &&
     state.time &&
     politicaAceptada;
