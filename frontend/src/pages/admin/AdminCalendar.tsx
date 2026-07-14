@@ -15,7 +15,7 @@ const AdminCalendar: React.FC = () => {
   const [citas, setCitas] = useState<Cita[]>([]);
   const [loading, setLoading] = useState(true);
   const [filtroFecha, setFiltroFecha] = useState(() => new Date().toISOString().split("T")[0]);
-  const [timeTracking, setTimeTracking] = useState<Record<number, { activo: boolean; horaInicio?: string; horaFin?: string; diferenciaMinutos?: number }>>({});
+  const [timeTracking, setTimeTracking] = useState<Record<number, { activo: boolean; horaInicio?: string; horaFin?: string; diferenciaMinutos?: number; completadoATiempo?: boolean }>>({});
   const [startLoading, setStartLoading] = useState<number | null>(null);
 
   const loadTimeTracking = async (citas: Cita[]) => {

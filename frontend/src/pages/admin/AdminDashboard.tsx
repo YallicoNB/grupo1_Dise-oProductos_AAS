@@ -95,7 +95,7 @@ const AdminDashboard: React.FC = () => {
     { label: "Ordenes de Compra", value: data?.totalOrdenes ?? 0, icon: "bi-receipt" },
     { label: "Satisfaccion Promedio", value: data?.satisfaccionPromedio ?? 0, icon: "bi-star", suffix: "/5" },
     { label: "Encuestas Respondidas", value: data?.totalEncuestas ?? 0, icon: "bi-chat-square-text" },
-    { label: "Servicios a Tiempo", value: data?.totalServiciosTimed > 0 ? Math.round((data.serviciosATiempo / data.totalServiciosTimed) * 100) + "%" : "—", icon: "bi-clock" },
+    { label: "Servicios a Tiempo", value: data && data.totalServiciosTimed ? Math.round((data.serviciosATiempo / data.totalServiciosTimed) * 100) + "%" : "—", icon: "bi-clock" },
     { label: "Duracion Promedio", value: data?.promedioDuracionMinutos ? data.promedioDuracionMinutos + " min" : "—", icon: "bi-hourglass-split" },
   ];
 

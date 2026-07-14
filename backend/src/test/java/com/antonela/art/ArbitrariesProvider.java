@@ -20,14 +20,14 @@ public class ArbitrariesProvider {
     @net.jqwik.api.Provide
     Arbitrary<Servicio> servicios() {
         return Arbitraries.of(
-                new Servicio(null, "Planchado", "Alisado profesional", new BigDecimal("15.00"), new BigDecimal("20.00"), null, null),
-                new Servicio(null, "Laminado", "Laminado de cejas", new BigDecimal("25.00"), null, null, null),
-                new Servicio(null, "Pedicura", "Pedicura completa", new BigDecimal("26.00"), null, null, null),
-                new Servicio(null, "Uñas acrílicas", "Uñas con diseño", new BigDecimal("50.00"), null, null, null),
-                new Servicio(null, "Rubber", "Esmaltado en gel", new BigDecimal("35.00"), null, null, null),
-                new Servicio(null, "Esmaltado", "Esmaltado semipermanente", new BigDecimal("25.00"), null, null, null),
-                new Servicio(null, "Alisado", "Alisado progresivo", new BigDecimal("70.00"), null, null, null),
-                new Servicio(null, "Pestañas 1x1", "Extensiones pelo a pelo", new BigDecimal("35.00"), null, null, null)
+                new Servicio(null, "Planchado", "Alisado profesional", new BigDecimal("15.00"), new BigDecimal("20.00"), null, null, null),
+                new Servicio(null, "Laminado", "Laminado de cejas", new BigDecimal("25.00"), null, null, null, null),
+                new Servicio(null, "Pedicura", "Pedicura completa", new BigDecimal("26.00"), null, null, null, null),
+                new Servicio(null, "Uñas acrílicas", "Uñas con diseño", new BigDecimal("50.00"), null, null, null, null),
+                new Servicio(null, "Rubber", "Esmaltado en gel", new BigDecimal("35.00"), null, null, null, null),
+                new Servicio(null, "Esmaltado", "Esmaltado semipermanente", new BigDecimal("25.00"), null, null, null, null),
+                new Servicio(null, "Alisado", "Alisado progresivo", new BigDecimal("70.00"), null, null, null, null),
+                new Servicio(null, "Pestañas 1x1", "Extensiones pelo a pelo", new BigDecimal("35.00"), null, null, null, null)
         );
     }
 
