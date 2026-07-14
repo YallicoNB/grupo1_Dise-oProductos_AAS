@@ -3101,6 +3101,143 @@ input[type="checkbox"]:checked + .checkbox-label .custom-checkbox::after {
   }
 }
 
+/* ── ANIMACIONES ── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.animate-on-scroll.animate-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 4px 18px rgba(184, 150, 46, 0.35); }
+  50%      { box-shadow: 0 4px 28px rgba(184, 150, 46, 0.55); }
+}
+
+/* ── HERO ELEVATOR PITCH ── */
+.hero-title {
+  font-family: "Playfair Display", serif !important;
+  font-weight: 700 !important;
+}
+
+.hero-elevator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(184, 150, 46, 0.08);
+  border: 1px solid rgba(184, 150, 46, 0.2);
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 12px;
+  color: var(--gold-dark);
+  font-weight: 500;
+  font-family: "DM Sans", sans-serif;
+  margin-bottom: 16px;
+}
+
+.hero-elevator i {
+  font-size: 14px;
+  color: var(--gold);
+}
+
+.btn-gold--hero {
+  padding: 14px 34px !important;
+  font-size: 15px !important;
+  animation: pulse-glow 2.5s ease-in-out infinite;
+}
+
+/* ── CARD ICONS ── */
+.card p i {
+  color: var(--gold);
+  vertical-align: middle;
+}
+
+/* ── HISTORIA / STORYTELLING ── */
+.historia {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 72px 64px;
+}
+
+.historia .section-header h2 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 8px;
+}
+
+.historia-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  margin-top: 32px;
+}
+
+.historia-text p {
+  font-size: 15px;
+  color: var(--text-light);
+  line-height: 1.8;
+  margin-bottom: 16px;
+  font-family: "DM Sans", sans-serif;
+}
+
+.historia-firma {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(184, 150, 46, 0.15);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--gold-dark);
+  font-family: "DM Sans", sans-serif;
+}
+
+.historia-firma i {
+  font-size: 24px;
+  color: var(--gold);
+  opacity: 0.5;
+}
+
+.historia-img img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .historia-content {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .historia-img img {
+    height: 280px;
+  }
+
+  .historia {
+    padding: 48px 24px;
+  }
+
+  .hero-elevator {
+    font-size: 11px;
+  }
+}
+
 /* ── DARK MODE ── */
 [data-theme="dark"] {
   --gold: #d4af50;
