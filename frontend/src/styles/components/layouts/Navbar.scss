@@ -21,7 +21,7 @@
     font-family: "Cormorant Garamond", serif;
     font-size: 20px;
     font-weight: 600;
-    color: color.$dark;
+    color: var(--dark);
   }
 
   .logo-icon {
@@ -32,7 +32,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: color.$dark;
+    background: var(--dark);
     flex-shrink: 0;
 
     img {
