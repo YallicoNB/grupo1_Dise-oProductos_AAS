@@ -156,7 +156,7 @@ public class ClienteController {
                             c.getId(),
                             c.getServicio().getNombre(),
                             c.getFechaCita(),
-                            c.getHoraCita(),
+                            c.getHoraCita().toString(),
                             c.getMontoPagado() != null ? c.getMontoPagado() : c.getServicio().getPrecioMinimo(),
                             c.getEstado()))
                     .toList();

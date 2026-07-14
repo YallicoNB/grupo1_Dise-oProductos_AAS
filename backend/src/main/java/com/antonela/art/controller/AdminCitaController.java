@@ -17,6 +17,7 @@ import java.time.LocalTime;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/admin/appointments")
@@ -51,9 +52,11 @@ public class AdminCitaController {
 
     @GetMapping("/{id}/time")
     public ResponseEntity<?> getTimeTracking(@PathVariable Long id) {
-        return seguimientoTiempoRepository.findByCitaId(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.ok(Map.of("activo", false)));
+        Optional<SeguimientoTiempo> st = seguimientoTiempoRepository.findByCitaId(id);
+        if (st.isPresent()) {
+            return ResponseEntity.ok(st.get());
+        }
+        return ResponseEntity.ok(Map.of("activo", false));
     }
 
     @PostMapping("/{id}/start")
