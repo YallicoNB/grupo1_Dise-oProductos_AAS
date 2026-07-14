@@ -6,6 +6,11 @@ interface DashboardData {
   totalClientes: number;
   productosActivos: number;
   totalOrdenes: number;
+  satisfaccionPromedio: number;
+  totalEncuestas: number;
+  serviciosATiempo: number;
+  totalServiciosTimed: number;
+  promedioDuracionMinutos: number;
 }
 
 interface Notificacion {
@@ -88,6 +93,10 @@ const AdminDashboard: React.FC = () => {
     { label: "Clientes Registrados", value: data?.totalClientes ?? 0, icon: "bi-people" },
     { label: "Productos Activos", value: data?.productosActivos ?? 0, icon: "bi-box-seam" },
     { label: "Ordenes de Compra", value: data?.totalOrdenes ?? 0, icon: "bi-receipt" },
+    { label: "Satisfaccion Promedio", value: data?.satisfaccionPromedio ?? 0, icon: "bi-star", suffix: "/5" },
+    { label: "Encuestas Respondidas", value: data?.totalEncuestas ?? 0, icon: "bi-chat-square-text" },
+    { label: "Servicios a Tiempo", value: data?.totalServiciosTimed > 0 ? Math.round((data.serviciosATiempo / data.totalServiciosTimed) * 100) + "%" : "—", icon: "bi-clock" },
+    { label: "Duracion Promedio", value: data?.promedioDuracionMinutos ? data.promedioDuracionMinutos + " min" : "—", icon: "bi-hourglass-split" },
   ];
 
   return (
@@ -140,7 +149,9 @@ const AdminDashboard: React.FC = () => {
                 style={{ fontSize: 24, color: "var(--gold)", opacity: 0.7 }}
               />
             </div>
-            <div style={statValue}>{s.value}</div>
+            <div style={statValue}>
+              {(s as any).suffix ? `${s.value}${(s as any).suffix}` : s.value}
+            </div>
             <div
               style={{
                 fontSize: 13,

@@ -33,6 +33,7 @@ import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminServices from "./pages/admin/AdminServices";
 import AdminGallery from "./pages/admin/AdminGallery";
 import AdminClients from "./pages/admin/AdminClients";
+import AdminComplaints from "./pages/admin/AdminComplaints";
 
 import { MainLayout } from "./layout/MainLayout";
 
@@ -78,6 +79,7 @@ export const router = createBrowserRouter([
       { path: "clients", element: <AdminClients /> },
       { path: "orders", element: <AdminOrders /> },
       { path: "tasks", element: <AdminTasks /> },
+      { path: "complaints", element: <AdminComplaints /> },
     ],
   },
 ]);

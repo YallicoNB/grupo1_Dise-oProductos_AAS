@@ -165,6 +165,54 @@ CREATE TABLE IF NOT EXISTS notificaciones_admin (
     creado_en TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
+-- 14. comentarios (Avance 4)
+CREATE TABLE IF NOT EXISTS comentarios (
+    id BIGSERIAL PRIMARY KEY,
+    id_cliente BIGINT NOT NULL,
+    mensaje TEXT NOT NULL,
+    estado VARCHAR(20) NOT NULL DEFAULT 'enviado',
+    respuesta_admin TEXT,
+    respondido_en TIMESTAMP,
+    creado_en TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    actualizado_en TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_comentario_cliente FOREIGN KEY (id_cliente) REFERENCES clientes(id)
+);
+
+-- 15. encuestas_satisfaccion (Avance 4)
+CREATE TABLE IF NOT EXISTS encuestas_satisfaccion (
+    id BIGSERIAL PRIMARY KEY,
+    id_cita BIGINT NOT NULL UNIQUE,
+    puntuacion INT NOT NULL CHECK (puntuacion >= 1 AND puntuacion <= 5),
+    comentario TEXT,
+    creado_en TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_encuesta_cita FOREIGN KEY (id_cita) REFERENCES citas(id)
+);
+
+-- 16. seguimiento_tiempo (Avance 4)
+CREATE TABLE IF NOT EXISTS seguimiento_tiempo (
+    id BIGSERIAL PRIMARY KEY,
+    id_cita BIGINT NOT NULL UNIQUE,
+    hora_inicio TIMESTAMP NOT NULL,
+    hora_fin TIMESTAMP,
+    diferencia_minutos INT,
+    completado_a_tiempo BOOLEAN,
+    creado_en TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_seguimiento_cita FOREIGN KEY (id_cita) REFERENCES citas(id)
+);
+
+-- Modificacion: agregar duracion_minutos a servicios (Avance 4)
+ALTER TABLE servicios ADD COLUMN IF NOT EXISTS duracion_minutos INT;
+
+-- Actualizar duracion estimada para servicios existentes
+UPDATE servicios SET duracion_minutos = 60 WHERE nombre = 'Planchado';
+UPDATE servicios SET duracion_minutos = 45 WHERE nombre = 'Laminado';
+UPDATE servicios SET duracion_minutos = 40 WHERE nombre = 'Pedicura';
+UPDATE servicios SET duracion_minutos = 90 WHERE nombre = 'Uñas acrílicas';
+UPDATE servicios SET duracion_minutos = 60 WHERE nombre = 'Rubber';
+UPDATE servicios SET duracion_minutos = 30 WHERE nombre = 'Esmaltado';
+UPDATE servicios SET duracion_minutos = 90 WHERE nombre = 'Alisado';
+UPDATE servicios SET duracion_minutos = 60 WHERE nombre = 'Pestañas 1x1';
+
 -- ============================================================
 -- SEED DATA
 -- ============================================================

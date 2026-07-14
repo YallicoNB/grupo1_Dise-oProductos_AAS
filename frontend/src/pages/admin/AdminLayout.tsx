@@ -11,6 +11,7 @@ const navItems = [
   { path: "/admin/orders", label: "Ordenes", icon: "bi-receipt" },
   { path: "/admin/clients", label: "Clientes", icon: "bi-people" },
   { path: "/admin/tasks", label: "Tareas", icon: "bi-check2-square" },
+  { path: "/admin/complaints", label: "Comentarios", icon: "bi-chat-dots" },
 ];
 
 const AdminLayout: React.FC = () => {

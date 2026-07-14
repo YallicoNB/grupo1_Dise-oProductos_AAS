@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import api from '../services/api';
 import { Cita } from '../types/appointments';
 import { ModalCancelacion } from './ModalCancelacion';
+import EncuestaModal from './EncuestaModal';
 
 export const ListaCitasCliente: React.FC = () => {
   const [citas, setCitas] = useState<Cita[]>([]);
@@ -13,6 +14,10 @@ export const ListaCitasCliente: React.FC = () => {
   
   // Cita seleccionada para cancelar
   const [selectedCitaId, setSelectedCitaId] = useState<number | null>(null);
+
+  // Encuesta
+  const [encuestaCita, setEncuestaCita] = useState<{ id: number; nombre: string } | null>(null);
+  const [yaCalificados, setYaCalificados] = useState<Set<number>>(new Set());
 
   const fetchCitas = async () => {
     try {
@@ -218,6 +223,35 @@ export const ListaCitasCliente: React.FC = () => {
                   </button>
                 )}
 
+                {/* Botón de Calificar (citas completadas) */}
+                {activeTab === 'historial' && !yaCalificados.has(cita.id) && (
+                  <button
+                    onClick={() => setEncuestaCita({ id: cita.id, nombre: cita.servicio?.nombre || 'Servicio' })}
+                    style={{
+                      padding: '10px 18px',
+                      borderRadius: '30px',
+                      border: '1.5px solid var(--gold)',
+                      backgroundColor: 'transparent',
+                      color: 'var(--gold-dark)',
+                      cursor: 'pointer',
+                      fontSize: '13px',
+                      fontWeight: 500,
+                      transition: 'all 0.25s',
+                      fontFamily: '"DM Sans", sans-serif'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.backgroundColor = 'var(--gold)';
+                      e.currentTarget.style.color = '#fff';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.backgroundColor = 'transparent';
+                      e.currentTarget.style.color = 'var(--gold-dark)';
+                    }}
+                  >
+                    Calificar
+                  </button>
+                )}
+
                 {/* Mostrar Monto Reembolsado si es cancelada y aplica */}
                 {activeTab === 'canceladas' && (
                   <div style={{ fontSize: '13px', color: 'var(--muted)', textAlign: 'right' }}>
@@ -234,6 +268,19 @@ export const ListaCitasCliente: React.FC = () => {
             </div>
           ))}
         </div>
+      )}
+
+      {/* Modal de Encuesta */}
+      {encuestaCita !== null && (
+        <EncuestaModal
+          citaId={encuestaCita.id}
+          servicioNombre={encuestaCita.nombre}
+          onClose={() => setEncuestaCita(null)}
+          onSuccess={() => {
+            setYaCalificados((prev) => new Set(prev).add(encuestaCita.id));
+            setEncuestaCita(null);
+          }}
+        />
       )}
 
       {/* Modal de Cancelación */}

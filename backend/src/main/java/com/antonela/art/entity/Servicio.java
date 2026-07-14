@@ -26,6 +26,9 @@ public class Servicio {
     @Column(name = "precio_maximo", precision = 10, scale = 2)
     private BigDecimal precioMaximo;
 
+    @Column(name = "duracion_minutos")
+    private Integer duracionMinutos;
+
     @Column(name = "creado_en", nullable = false, updatable = false)
     private LocalDateTime creadoEn;
 

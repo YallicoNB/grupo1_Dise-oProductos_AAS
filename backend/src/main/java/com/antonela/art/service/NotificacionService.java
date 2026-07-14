@@ -1,6 +1,7 @@
 package com.antonela.art.service;
 
 import com.antonela.art.entity.Cita;
+import com.antonela.art.entity.Comentario;
 import com.antonela.art.entity.NotificacionAdmin;
 import com.antonela.art.entity.OrdenCompra;
 import com.antonela.art.repository.NotificacionAdminRepository;
@@ -158,6 +159,24 @@ public class NotificacionService {
                 "Pago recibido para cita #" + cita.getId()
                         + " - " + cita.getCliente().getNombreCompleto()
                         + " - " + cita.getServicio().getNombre());
+    }
+
+    public void enviarRespuestaComentario(Comentario comentario) {
+        String asunto = "Respuesta a tu comentario - Antonela Art Salon";
+        String cuerpo = "Antonela Art Salon\n"
+                + "=========================\n"
+                + "Tu comentario ha sido respondido.\n\n"
+                + "Tu mensaje: " + comentario.getMensaje() + "\n\n"
+                + "Respuesta del salon:\n" + comentario.getRespuestaAdmin() + "\n\n"
+                + "Gracias por ayudarnos a mejorar.\n"
+                + "Visita tu panel de cliente para mas detalles.";
+
+        boolean enviado = enviarWhatsApp(comentario.getCliente().getTelefono(), cuerpo);
+        if (!enviado) {
+            enviarEmail(comentario.getCliente().getCorreoElectronico(), asunto, cuerpo);
+        }
+
+        logger.info("Notificacion de respuesta enviada para comentario ID: {}", comentario.getId());
     }
 
     private boolean enviarWhatsApp(String destinatario, String mensaje) {
