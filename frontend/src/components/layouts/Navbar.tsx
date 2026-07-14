@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useCart } from "../../contexts/CartContext";
+import { useTheme } from "../../contexts/ThemeContext";
 
 const navItems = [
   { path: "/", label: "Inicio" },
@@ -13,6 +14,7 @@ const navItems = [
 const Navbar: React.FC = () => {
   const location = useLocation();
   const { items } = useCart();
+  const { theme, toggleTheme } = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const isActive = (path: string) => {
@@ -26,7 +28,7 @@ const Navbar: React.FC = () => {
     <nav className="navbar">
       <Link to="/" className="logo" onClick={closeMobile}>
         <div className="logo-icon">
-          <img src="/img/logo antonela art.png" alt="Antonela Art" />
+          <img src="/img/logo antonela art.png" alt="Antonela Art" loading="lazy" />
         </div>
         Antonela Art
       </Link>
@@ -64,6 +66,14 @@ const Navbar: React.FC = () => {
         />
       )}
       <div className="nav-icons">
+        <button
+          onClick={toggleTheme}
+          className="theme-toggle"
+          aria-label={theme === "light" ? "Modo oscuro" : "Modo claro"}
+          title={theme === "light" ? "Activar modo oscuro" : "Activar modo claro"}
+        >
+          <i className={`bi ${theme === "light" ? "bi-moon-stars" : "bi-sun"}`}></i>
+        </button>
         <Link to="/cart" className="cart-icon-wrapper" onClick={closeMobile}>
           <i className="bi bi-bag"></i>
           {items.length > 0 && (

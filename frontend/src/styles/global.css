@@ -3100,3 +3100,116 @@ input[type="checkbox"]:checked + .checkbox-label .custom-checkbox::after {
     font-size: 24px !important;
   }
 }
+
+/* ── DARK MODE ── */
+[data-theme="dark"] {
+  --gold: #d4af50;
+  --gold-light: #e8c55a;
+  --gold-dark: #b8962e;
+  --cream: #1a1a1e;
+  --cream-dark: #121214;
+  --dark: #e8e6e3;
+  --mid: #c0b8a8;
+  --text: #d0d0cc;
+  --text-light: #9a9a96;
+  --muted: #80807c;
+  --white: #1e1e22;
+  --border: #3a3a3e;
+  --panel-bg: #161618;
+  --shadow: 0 4px 32px rgba(0, 0, 0, 0.4);
+  --yape-bg: #2a1a08;
+  --bcp-blue: #4a8ac8;
+}
+
+[data-theme="dark"] body {
+  background: var(--cream);
+  color: var(--text);
+}
+
+[data-theme="dark"] .navbar {
+  background: rgba(26, 26, 30, 0.95);
+  border-bottom-color: rgba(212, 175, 80, 0.15);
+}
+
+[data-theme="dark"] .nav-links a {
+  color: var(--text-light);
+}
+
+[data-theme="dark"] .hero {
+  background: linear-gradient(135deg, #1e1e22 0%, #161618 100%);
+}
+
+[data-theme="dark"] .footer {
+  background: #121214;
+  border-top-color: rgba(212, 175, 80, 0.1);
+}
+
+[data-theme="dark"] .form-input,
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select {
+  background: #2a2a2e;
+  border-color: #3a3a3e;
+  color: var(--text);
+}
+
+[data-theme="dark"] .card,
+[data-theme="dark"] .product-card,
+[data-theme="dark"] .service-card {
+  background: var(--white);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .table,
+[data-theme="dark"] table {
+  color: var(--text);
+}
+
+[data-theme="dark"] .table thead th,
+[data-theme="dark"] table thead th {
+  border-bottom-color: var(--border);
+}
+
+[data-theme="dark"] .table tbody tr,
+[data-theme="dark"] table tbody tr {
+  border-bottom-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .btn-outline {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+[data-theme="dark"] .btn-outline-dark {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+[data-theme="dark"] .admin-sidebar {
+  background: #16161a;
+  border-right-color: rgba(212, 175, 80, 0.1);
+}
+
+[data-theme="dark"] .admin-sidebar a,
+[data-theme="dark"] .admin-sidebar button {
+  color: var(--text-light);
+}
+
+[data-theme="dark"] .admin-sidebar a:hover,
+[data-theme="dark"] .admin-sidebar button:hover {
+  background: rgba(212, 175, 80, 0.08);
+}
+
+[data-theme="dark"] .admin-main {
+  background: var(--panel-bg);
+}
+
+[data-theme="dark"] .admin-header {
+  background: rgba(30, 30, 34, 0.95);
+  border-bottom-color: rgba(212, 175, 80, 0.1);
+}
+
+[data-theme="dark"] .cart-sidebar {
+  background: #1e1e22;
+  border-left-color: rgba(212, 175, 80, 0.15);
+}

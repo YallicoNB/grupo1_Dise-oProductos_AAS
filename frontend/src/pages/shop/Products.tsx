@@ -137,7 +137,7 @@ const Products: React.FC = () => {
           <div className="card" key={p.id}>
             <div className={`card-img ${BG_CLASSES[idx % BG_CLASSES.length]}`}>
               <div className="img-placeholder">
-                <img src={p.urlImagen || "/img/img1.webp"} alt={p.nombre} />
+                <img src={p.urlImagen || "/img/img1.webp"} alt={p.nombre} loading="lazy" />
               </div>
             </div>
             <div className="card-body">

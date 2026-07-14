@@ -19,7 +19,7 @@ const Home: React.FC = () => {
           </div>
         </div>
         <div className="hero-img-wrap">
-          <img src="/img/index/1.jpeg" alt="Salón Antonela Art" />
+          <img src="/img/index/1.jpeg" alt="Salón Antonela Art" loading="eager" fetchPriority="high" />
           <div className="hero-img-badge">
             <span className="badge-num">+500</span>
             <span className="badge-txt">Clientes felices</span>
@@ -46,7 +46,7 @@ const Home: React.FC = () => {
           ].map((item, i) => (
             <Link to="/services" className="card" key={i}>
               <div className="card-img-wrap">
-                <img src={item.img} alt={item.label} />
+                <img src={item.img} alt={item.label} loading="lazy" />
               </div>
               <p>{item.label}</p>
             </Link>
@@ -64,12 +64,12 @@ const Home: React.FC = () => {
           <p>Galería de trabajos realizados con dedicación y profesionalismo</p>
         </div>
         <div className="galeria">
-          <img className="galeria-tall" src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&q=80" alt="Trabajo 1" />
-          <img src="/img/index/10.jpeg" alt="Trabajo 2" />
-          <img className="galeria-wide" src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=800&q=80" alt="Trabajo 3" />
-          <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&q=80" alt="Trabajo 4" />
-          <img src="https://images.unsplash.com/photo-1600948836101-f9ffda59d250?w=600&q=80" alt="Trabajo 5" />
-          <img src="/img/index/9.jpeg" alt="Trabajo 6" />
+          <img className="galeria-tall" src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&q=80" alt="Trabajo 1" loading="lazy" />
+          <img src="/img/index/10.jpeg" alt="Trabajo 2" loading="lazy" />
+          <img className="galeria-wide" src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=800&q=80" alt="Trabajo 3" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&q=80" alt="Trabajo 4" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1600948836101-f9ffda59d250?w=600&q=80" alt="Trabajo 5" loading="lazy" />
+          <img src="/img/index/9.jpeg" alt="Trabajo 6" loading="lazy" />
         </div>
       </section>
     </>

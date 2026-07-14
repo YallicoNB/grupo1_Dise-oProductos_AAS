@@ -119,6 +119,7 @@ const Services: React.FC = () => {
                 <img
                   src={SERVICES_IMG[svc.nombre] || SERVICES_IMG["Planchado"]}
                   alt={svc.nombre}
+                  loading="lazy"
                 />
               </div>
               <div className="service-info">

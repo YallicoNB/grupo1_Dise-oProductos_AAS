@@ -103,7 +103,7 @@ const AdminGallery: React.FC = () => {
             <div key={img.id} style={{ background: "var(--white)", borderRadius: 14, overflow: "hidden", border: "1px solid rgba(184,150,46,0.12)", boxShadow: "0 4px 12px rgba(0,0,0,0.04)" }}>
               <div style={{ width: "100%", height: 180, overflow: "hidden", background: "var(--cream-dark)" }}>
                 {img.urlImagen ? (
-                  <img src={img.urlImagen} alt={img.descripcion || ""} style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  <img src={img.urlImagen} alt={img.descripcion || ""} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover" }}
                     onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
                 ) : (
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100%", color: "var(--muted)" }}>

@@ -54,6 +54,7 @@ const CartSidebar: React.FC<CartSidebarProps> = ({ open, onClose }) => {
                     src={producto.urlImagen || "/img/img1.webp"}
                     alt={producto.nombre}
                     className="cart-sidebar__img"
+                    loading="lazy"
                   />
                   <div className="cart-sidebar__info">
                     <span className="cart-sidebar__name">{producto.nombre}</span>

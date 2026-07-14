@@ -10,6 +10,13 @@ const Footer: React.FC = () => {
           Elevando la belleza a una forma de arte. Productos curados para la
           piel más exigente.
         </p>
+        <div className="cert-badge">
+          <i className="bi bi-tree"></i>
+          <div>
+            <strong>Certificacion Papel Cero</strong>
+            <span>Comprometidos con el medio ambiente</span>
+          </div>
+        </div>
       </div>
       <div className="footer-col">
         <h4>Servicio</h4>

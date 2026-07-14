@@ -85,6 +85,7 @@ const Gallery: React.FC = () => {
                   src={img.urlImagen}
                   alt={img.descripcion || categoria}
                   onClick={() => setSelectedImg(img)}
+                  loading="lazy"
                   style={{
                     cursor: "pointer",
                     height: "220px",
@@ -123,6 +124,7 @@ const Gallery: React.FC = () => {
             <img
               src={selectedImg.urlImagen}
               alt={selectedImg.descripcion || "Galería"}
+              loading="lazy"
               style={{
                 maxWidth: "100%",
                 maxHeight: "90vh",

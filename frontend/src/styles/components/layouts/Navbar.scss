@@ -123,6 +123,27 @@
     }
   }
 
+  .theme-toggle {
+    background: none;
+    border: 1.5px solid rgba(color.$gold, 0.3);
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: color.$muted;
+    font-size: 16px;
+    transition: all 0.25s;
+
+    &:hover {
+      color: color.$gold;
+      border-color: color.$gold;
+      background: rgba(color.$gold, 0.08);
+    }
+  }
+
   .cart-icon-wrapper {
     position: relative;
     display: inline-flex;
@@ -182,6 +203,9 @@
     }
     .nav-links--open {
       right: 0;
+    }
+    [data-theme="dark"] .nav-links {
+      background: #1e1e22;
     }
     .nav-links-mobile-only {
       display: block !important;
